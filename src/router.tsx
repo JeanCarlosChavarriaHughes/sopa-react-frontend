@@ -10,9 +10,9 @@ const routes: PartialRouteObject[] = [
     element: <SidebarLayout />,
     children: [
       {
-        path: 'invoices', element: <Invoices />
+        path: 'admin/facturas', element: <Invoices />
       }, {
-        path: 'gastos', element: <Expenses />
+        path: 'admin/gastos', element: <Expenses />
       }
     ]
   }
