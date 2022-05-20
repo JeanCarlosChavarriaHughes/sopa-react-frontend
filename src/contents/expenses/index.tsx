@@ -5,6 +5,7 @@ import Button from "../../components/Button"
 import DataTable from "../../components/DataTable"
 import Dropdown from "../../components/Dropdown"
 import IconButton from "../../components/IconButton"
+import IcDownload from "../../components/Icons/icdownload"
 import Search from "../../components/Icons/search"
 import Trash from "../../components/Icons/trash"
 import Modal from "../../components/Modal"
@@ -76,7 +77,8 @@ const Expenses = () => {
   const onRemove = async () => {
     try {
       const res = await postApi(apiurls.deleteGasto, { idGasto: gasto.idgasto }, false)
-      console.log(res)
+      setGastos(gastos.filter(e => e.idgasto != gasto.idgasto))
+      onClose()
     } catch (e) {
       console.log(e)
     }
@@ -86,8 +88,23 @@ const Expenses = () => {
     try {
       if (gasto.idgasto > 0) {
         //edit
-        const res = await putApi(apiurls.updateGasto, { ...gasto }, false)
-        console.log(res)
+        const res = await putApi(apiurls.updateGasto, {
+          descripcionGasto: gasto.descripcionGasto,
+          estadoGasto: gasto.estadoGasto,
+          montoGasto: gasto.montoGasto,
+          observacionGasto: gasto.observacionGasto,
+          idGasto: gasto.idgasto
+        }, false)
+        setGastos(gastos.map(e => e.idgasto != gasto.idgasto ? e :
+          {
+            idgasto: gasto.idgasto,
+            descripciongasto: gasto.descripcionGasto,
+            descripciontipogasto: tipos.find(t => t.idtipogasto == gasto.idTipoGasto)?.descripciontipogasto!,
+            estadogasto: gasto.estadoGasto,
+            montogasto: gasto.montoGasto,
+            observaciongasto: gasto.observacionGasto,
+            fechagasto: e.fechagasto
+          }))
       } else {
         //new
         const res = await postApi(apiurls.newGasto, { ...gasto }, false)
@@ -109,6 +126,15 @@ const Expenses = () => {
       console.log(e)
     }
   }
+
+  const onReport = async () => {
+    try {
+      //const res = await getApi(apiurls.reportGastos, false)
+      window.open('https://sopa-bar-desarrollo-develop.herokuapp.com' + apiurls.reportGastos, '_blank')
+    } catch (e) {
+      console.log(e)
+    }
+  }
   useEffect(() => {
     var tmp: IGasto[] = data
     if (tipoId > 0) {
@@ -119,13 +145,20 @@ const Expenses = () => {
       tmp = tmp.filter(e => e.descripciongasto.indexOf(word) >= 0 ||
         e.descripciontipogasto.indexOf(word) >= 0 ||
         e.estadogasto.indexOf(word) >= 0 ||
-        e.observaciongasto.indexOf(word) >= 0)
+        e.observaciongasto.indexOf(word) >= 0 ||
+        e.fechagasto.indexOf(word) >= 0
+      )
     }
     setGastos(tmp)
   }, [data, tipoId, word])
   return (
     <ContentLayout title="Gastos" description="Lleva el control de tus facturas por pagar.">
+
       <div className="content-expenses">
+        <div className="report-btn" >
+          <Button text="&nbsp;&nbsp;Descargar reporte" className="w-180" onClick={onReport} type='outlined'
+            prefix={<IcDownload />} />
+        </div>
         <div className="flex mb-30">
           <IconButton outlined onClick={() => { setOpenTipoModal(true) }} size={25}
             icon={<div className="text-24 text-primary text-center" style={{ lineHeight: '24px' }}>+</div>} />
@@ -167,7 +200,11 @@ const Expenses = () => {
             </DataTable>
             <div className="flex justify-end">
               <Button className="w-140" text="+&nbsp;&nbsp;&nbsp;Nuevo gasto"
-                onClick={() => { setOpen(true) }} />
+                onClick={() => {
+                  if (tipoId > 0)
+                    setGasto({ ...gasto, idTipoGasto: tipoId })
+                  setOpen(true)
+                }} />
             </div>
           </div>
           <Modal onClose={onClose} open={open}
@@ -205,9 +242,9 @@ const Expenses = () => {
                       value={gasto.observacionGasto} className='w-300 h-30' />
                   </div>
                   <div className="mt-35 flex justify-between">
-                    {gasto.idgasto > 0 && <div className="flex align-center text-primary text-14 cursor-pointer" onClick={onRemove}>
+                    {gasto.idgasto > 0 ? <div className="flex align-center text-primary text-14 cursor-pointer" onClick={onRemove}>
                       <Trash /><span>&nbsp;Eliminar gasto</span>
-                    </div>}
+                    </div> : <div />}
                     <div className="flex">
                       <Button onClick={onClose}
                         text='Cancelar' type="outlined" className="mr-16" />

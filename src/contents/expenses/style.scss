@@ -1,6 +1,19 @@
 @import '../../App.scss';
 
 .content-expenses {
+  position: relative;
+
+  .report-btn {
+    position: absolute;
+    right: 0;
+    top: -80px;
+    .button:hover {
+      svg {
+        fill: $white;
+      }
+    } 
+  }
+
   .tipo {
     line-height  : 25px;
     border-radius: 40px;

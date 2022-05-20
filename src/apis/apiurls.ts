@@ -7,5 +7,6 @@ export default {
   updateGasto: '/gastos/update',
   deleteGasto: '/gastos/delete',
   updateTipoGasto: '/api/tipo_gasto/update',
-  deleteTipoGasto: '/api/tipo_gasto/delete'
+  deleteTipoGasto: '/api/tipo_gasto/delete',
+  reportGastos: '/gastos/reporte'
 }

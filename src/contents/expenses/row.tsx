@@ -13,8 +13,8 @@ const Row = ({ data, onEdit, onPrint }: { data: any; onEdit: any; onPrint: any }
       <td className="flex flex-1">{data.observaciongasto}</td>
       <td className="flex flex-1">
         <div className="flex">
-          <IconButton icon={<Print />} onClick={onPrint} />
-          <div className="mh-8" />
+          {/* <IconButton icon={<Print />} onClick={onPrint} />
+          <div className="mh-8" /> */}
           <IconButton icon={<Pencil />} onClick={onEdit} />
         </div>
       </td>

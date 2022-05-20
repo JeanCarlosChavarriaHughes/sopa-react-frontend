@@ -284,9 +284,11 @@ svg {
 .bg-lightgray {
   background-color: rgba($gray, .3);
 }
+
 .opacity-3 {
   opacity: 0.3;
 }
+
 .line-30 {
   line-height: 30px;
 }
@@ -294,6 +296,17 @@ svg {
 .border-right {
   border-right: 1px solid rgba($gray, .3);
 }
+
 .cursor-pointer {
   cursor: pointer;
+}
+
+.round {
+  border-radius: 100px;
+  border-width : 1px;
+  border-style : solid;
+}
+
+.border-primary {
+  border-color: $primary;
 }
