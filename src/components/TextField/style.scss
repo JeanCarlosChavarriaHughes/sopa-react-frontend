@@ -1,0 +1,13 @@
+@import '../../App.scss';
+
+.textfield {
+  border       : 1px solid rgba($gray, 0.3);
+  border-radius: 4px;
+  input {
+    outline: none;
+    border: none;
+  }
+  svg {
+    fill: $primary;
+  }
+}

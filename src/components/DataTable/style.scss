@@ -1,0 +1,64 @@
+@import '../../App.scss';
+
+.table-wrapper {
+  .data-table {
+    .table-header {
+      tr {
+        td {
+          border-bottom: 1px solid $gray;
+          font-size    : 16px;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    border       : 1px solid $border;
+    border-radius: 4px;
+
+    .item {
+      height         : 36px;
+      display        : flex;
+      align-items    : center;
+      cursor         : pointer;
+      padding        : 0px 8px;
+      color          : $gray;
+      justify-content: center;
+      min-width      : 40px;
+
+      &.start {
+        border-top-left-radius   : 4px;
+        border-bottom-left-radius: 4px;
+        color                    : $primary;
+        width                    : 80px;
+      }
+
+      &.end {
+        border-top-right-radius   : 4px;
+        border-bottom-right-radius: 4px;
+        color                     : $primary;
+        width                     : 80px;
+      }
+
+      &.active,
+      &:hover {
+        color           : $white;
+        background-color: $primary;
+      }
+
+      &.disabled {
+        background-color: $white;
+        color           : $gray;
+        min-width       : 20px;
+      }
+
+      &.b-right {
+        border-right: 1px solid $border;
+      }
+
+      &.b-left {
+        border-left: 1px solid $border;
+      }
+    }
+  }
+}

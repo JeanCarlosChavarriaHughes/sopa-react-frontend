@@ -1,0 +1,36 @@
+@import '../../App.scss';
+
+.dropdown {
+  position: relative;
+  &.open {
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+  svg {
+    fill: $gray;
+  }
+
+  .input {
+    border       : 1px solid rgba($gray, 0.3);
+    border-radius: 4px;
+    cursor       : pointer;
+    line-height  : 32px;
+  }
+
+  .menus {
+    background-color: white;
+    position        : absolute;
+    z-index         : 2;
+    border          : 1px solid rgba($gray, 0.3);
+    border-radius   : 4px;
+
+    .menu-item {
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($gray, 0.2);
+      }
+    }
+  }
+}

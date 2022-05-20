@@ -1,0 +1,10 @@
+@import '../../App.scss';
+
+.icon-button {
+  cursor: pointer;
+
+  &.outlined {
+    border       : 1px solid $primary;
+    border-radius: 100px;
+  }
+}

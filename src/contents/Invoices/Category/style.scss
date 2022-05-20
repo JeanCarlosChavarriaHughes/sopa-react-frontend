@@ -1,0 +1,16 @@
+@import '../../../App.scss';
+
+.category {
+  border-radius   : 4px;
+  background-color: $white;
+  box-shadow      : 0px 2px 4px rgba(0, 0, 0, 0.075);
+
+  tr.row {
+    border-bottom: 1px solid rgba($gray, .3);
+
+    td {
+      justify-content: center;
+      
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import '../../../App.scss';
+
+.sidebar {
+  background-color: $white;
+  .sidebar-menu {
+    margin-top: 80px;
+
+    .item {
+      color: $gray;
+
+      svg {
+        fill : $gray;
+        width: 20px;
+      }
+
+      &:hover,
+      &.active {
+        background-color: rgba($primary, .15);
+        color           : $primary;
+
+        span {
+          svg {
+            fill: $primary;
+          }
+        }
+      }
+    }
+  }
+}

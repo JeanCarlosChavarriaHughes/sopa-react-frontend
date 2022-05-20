@@ -1,0 +1,17 @@
+@import '../../App.scss';
+
+.content-expenses {
+  .tipo {
+    line-height  : 25px;
+    border-radius: 40px;
+    border       : 1px solid $gray;
+    min-width    : 80px;
+    text-align   : center;
+
+    &.active {
+      background-color: rgba($primary, 0.15);
+      border          : 1px solid $primary;
+      color           : $primary;
+    }
+  }
+}

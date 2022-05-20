@@ -1,0 +1,28 @@
+@import '../../App.scss';
+
+.button {
+  border       : 1px solid $primary;
+  border-radius: 4px;
+  line-height  : 36px;
+  cursor       : pointer;
+
+  &.button-filled {
+    background-color: $primary;
+    color           : white;
+
+    &:hover {
+      background-color: $white;
+      color           : $primary;
+    }
+  }
+
+  &.button-outlined {
+    background-color: $white;
+    color           : $primary;
+
+    &:hover {
+      background-color: $primary;
+      color           : $white;
+    }
+  }
+}

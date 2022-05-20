@@ -1,0 +1,15 @@
+@import '../../App.scss';
+
+.tab {
+  .tab-item {
+    color        : $gray;
+    cursor       : pointer;
+    border-bottom: 2px solid rgba($gray, 0.25);
+
+    &:hover,
+    &.active {
+      color        : $primary;
+      border-bottom: 2px solid rgba($primary, 1);
+    }
+  }
+}
