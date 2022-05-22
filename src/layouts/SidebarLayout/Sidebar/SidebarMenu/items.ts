@@ -24,32 +24,32 @@ export interface MenuItems {
 const menuItems: MenuItem[] = [
   {
     name: 'Reportes',
-    link: '/reports',
+    link: '/admin/reports',
     icon: Report
   },
   {
     name: 'Inventario',
-    link: '/inventory',
+    link: '/admin/inventory',
     icon: Inventory
   },
   {
     name: 'Clientes',
-    link: '/clients',
+    link: '/admin/clients',
     icon: Users
   },
   {
     name: 'Facturas',
-    link: '/invoices',
+    link: '/admin/facturas',
     icon: Invoices
   },
   {
     name: 'Gastos',
-    link: '/gastos',
+    link: '/admin/gastos',
     icon: Spending
   },
   {
     name: 'Configuración',
-    link: '/configuration',
+    link: '/admin/configuration',
     icon: Setting
   }
 ]
