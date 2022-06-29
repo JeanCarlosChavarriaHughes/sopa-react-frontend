@@ -67,8 +67,8 @@ const Facturas = () => {
     <div className="category p-16">
       <div className='category-header flex justify-between'>
         <div>
-          <p className='category-title text-dark text-20'>Categoría</p>
-          <p className='category-count text-gray text-14 mt-5'>11 facturas</p>
+          <p className='category-title text-dark text-20'>Facturas</p>
+          <p className='category-count text-gray text-14 mt-5'>{data.length} Facturas</p>
         </div>
         <TextField onChange={(e: any) => { setWord(e.target.value) }} className='pr-9'
           value={word} placeholder='Buscar...' suffix={<Search />} />
