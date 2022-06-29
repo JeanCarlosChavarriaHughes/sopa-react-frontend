@@ -21,7 +21,7 @@ const Product = ({ data, onRemove }: { data: any, onRemove: any }) => {
     </div>
   )
 }
-const Category = () => {
+const Facturas = () => {
   const headers = ['ID', 'Fecha', 'Periodo', 'Cliente', 'Subtotal', 'Descuento', 'Estado', '']
   const [word, setWord] = useState('')
   const data = [
@@ -115,7 +115,7 @@ const Category = () => {
         <div className='pt-20'>
           <div className='flex'>
             <p className='text-gray text-16 mb-8'>
-              ¿Estás seguro que deseás anular esta factura?<br/><br/>
+              ¿Estás seguro que deseás anular esta factura?<br /><br />
               Al anularla se generara una nota de credito por el mismo monto de la factura original.</p>
           </div>
           <div className="flex justify-end mt-54">
@@ -129,4 +129,4 @@ const Category = () => {
   )
 }
 
-export default Category
+export default Facturas
