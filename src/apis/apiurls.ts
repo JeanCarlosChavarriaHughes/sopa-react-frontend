@@ -1,5 +1,7 @@
 export default {
   login: '/api/admin/login',
+
+  // ModuloGasto
   fetchGastos: '/gastos',
   fetchTipoGastos: '/tipoGastos',
   newGasto: '/gastos/create',
@@ -8,5 +10,9 @@ export default {
   deleteGasto: '/gastos/delete',
   updateTipoGasto: '/api/tipo_gasto/update',
   deleteTipoGasto: '/api/tipo_gasto/delete',
-  reportGastos: '/gastos/reporte'
+  reportGastos: '/gastos/reporte',
+
+  // Modulo Facturas
+  getFacturas: '/getCanceledBills'
+
 }

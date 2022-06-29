@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { getApi } from '../../../apis/apis'
+import apiurls from '../../../apis/apiurls'
 import Button from '../../../components/Button'
 import DataTable from '../../../components/DataTable'
 import IconButton from '../../../components/IconButton'
@@ -8,6 +10,7 @@ import Search from '../../../components/Icons/search'
 import Trash from '../../../components/Icons/trash'
 import Modal from '../../../components/Modal'
 import TextField from '../../../components/TextField'
+import { IFactura } from '../../../Models/Facturas/IFactura'
 import Row from './row'
 import './style.scss'
 
@@ -24,21 +27,36 @@ const Product = ({ data, onRemove }: { data: any, onRemove: any }) => {
 const Facturas = () => {
   const headers = ['ID', 'Fecha', 'Periodo', 'Cliente', 'Subtotal', 'Descuento', 'Estado', '']
   const [word, setWord] = useState('')
-  const data = [
-    { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
-    { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
-    { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
-    { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
-    { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
-    { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
-    { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
-  ]
+  // const data = [
+  //   { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
+  //   { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
+  //   { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
+  //   { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
+  //   { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
+  //   { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
+  //   { id: 1, date: '02/08/2020', period: 'Segundo', client: 'Jean Carlos Chavarria', subtotal: '¢100,000', discount: 0, status: 0 },
+  // ]
   const [offset, setOffset] = useState(0)
   const [open, setOpen] = useState(false)
   const [openFacturaRemove, setOpenFacturaRemove] = useState(false)
   const [products, setProducts] = useState<any>([])
   const [pname, setpName] = useState('')
   const [pamount, setpAmount] = useState(0)
+  const [data, setData] = useState<IFactura[]>([])
+
+  useEffect(() => {
+    fetchFacturas()
+  }, [])
+  const fetchFacturas = async () => {
+    try {
+      const res = await getApi(apiurls.getFacturas, false)
+      setData(res)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+
 
   const onClose = () => {
     setOpen(false); setProducts([]);
