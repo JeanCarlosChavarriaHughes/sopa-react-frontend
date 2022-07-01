@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Tab from "../../components/Tab"
 import ContentLayout from "../../layouts/ContentLayout"
-import Facturas from "./Category"
+import Facturas from "./Facturas"
 
 const Invoices = () => {
 
