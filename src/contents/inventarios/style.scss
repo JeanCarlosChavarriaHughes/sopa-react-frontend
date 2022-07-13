@@ -1,0 +1,60 @@
+@import '../../App.scss';
+
+.content-expenses {
+  position: relative;
+
+  .report-btn {
+    position: absolute;
+    right: 0;
+    top: -80px;
+    .button:hover {
+      svg {
+        fill: $white;
+      }
+    } 
+  }
+
+  .tipo {
+    line-height  : 25px;
+    border-radius: 40px;
+    border       : 1px solid $gray;
+    min-width    : 80px;
+    text-align   : center;
+
+    &.active {
+      background-color: rgba($primary, 0.15);
+      border          : 1px solid $primary;
+      color           : $primary;
+    }
+  }
+}
+
+.inventario {
+  border-radius   : 4px;
+  background-color: $white;
+  box-shadow      : 0px 2px 4px rgba(0, 0, 0, 0.075);
+  width: 500px;
+
+  tr.row {
+    border-bottom: 1px solid rgba($gray, .3);
+
+    td {
+      justify-content: center;
+    }
+  }
+}
+
+.productos {
+  border-radius   : 4px;
+  background-color: $white;
+  box-shadow      : 0px 2px 4px rgba(0, 0, 0, 0.075);
+  width: 500px;
+
+  tr.row {
+    border-bottom: 1px solid rgba($gray, .3);
+
+    td {
+      justify-content: center;
+    }
+  }
+}
