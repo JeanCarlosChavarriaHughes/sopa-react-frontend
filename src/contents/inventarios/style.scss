@@ -7,32 +7,33 @@
     position: absolute;
     right: 0;
     top: -80px;
+
     .button:hover {
       svg {
         fill: $white;
       }
-    } 
+    }
   }
 
   .tipo {
-    line-height  : 25px;
+    line-height: 25px;
     border-radius: 40px;
-    border       : 1px solid $gray;
-    min-width    : 80px;
-    text-align   : center;
+    border: 1px solid $gray;
+    min-width: 80px;
+    text-align: center;
 
     &.active {
       background-color: rgba($primary, 0.15);
-      border          : 1px solid $primary;
-      color           : $primary;
+      border: 1px solid $primary;
+      color: $primary;
     }
   }
 }
 
 .inventario {
-  border-radius   : 4px;
+  border-radius: 4px;
   background-color: $white;
-  box-shadow      : 0px 2px 4px rgba(0, 0, 0, 0.075);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.075);
   width: 500px;
 
   tr.row {
@@ -45,10 +46,11 @@
 }
 
 .productos {
-  border-radius   : 4px;
+  border-radius: 4px;
   background-color: $white;
-  box-shadow      : 0px 2px 4px rgba(0, 0, 0, 0.075);
-  width: 500px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.075);
+  max-width: 800px;
+  margin: 10px;
 
   tr.row {
     border-bottom: 1px solid rgba($gray, .3);
@@ -57,4 +59,88 @@
       justify-content: center;
     }
   }
+}
+
+.producto {
+  background-color: $productoColor  !important;
+  width: fit-content;
+  height: auto;
+  justify-self: center;
+  align-self: center;
+  line-height: 25px;
+  border-radius: 40px;
+  border: 1px solid $gray;
+  min-width: 80px;
+  text-align: center;
+  font-size: 16px;
+  border-Width: 5;
+  border-Bottom-Left-Radius: 20;
+  border-Bottom-Right-Radius: 20;
+  margin: 10px;
+  cursor: pointer;
+
+  &.active {
+    background-color: rgba($productoColor, 0.15) !important;
+    border: 1px solid $productoColor  !important;
+    color: $primary;
+  }
+
+  &.producto-filled {
+    background-color: $productoColor  !important;
+    color: white;
+
+    &:hover {
+      background-color: $white;
+      color: $productoColor  !important;
+    }
+  }
+
+  &.producto-outlined {
+    background-color: $white;
+    color: $productoColor  !important;
+
+    &:hover {
+      background-color: $productoColor  !important;
+      color: $white;
+    }
+  }
+}
+
+.gridStyle {
+  display: grid;
+  // grid-template-columns: 10rem 10rem 10rem;
+  grid-gap: '10px';
+  grid-auto-flow: row;
+  max-width: inherit;
+  height: 100vh;
+  align-Content: 'stretch';
+  align-Items: 'center';
+  display: 'grid';
+  flex-Wrap: 'nowrap';
+  justify-Content: 'centers';
+  justify-Items: 'center';
+  overflow: scroll;
+  box-Sizing: 'border-box';
+  row-gap: 10px; //This adjusts the space between the rows
+  grid-template-rows: 60px; //This adjusts the width of the rows
+  grid-template-columns: repeat(auto-fill, 9em);
+}
+
+.containerGridStyle {
+  display: grid;
+  grid-template-columns: 700px 500px;
+  grid-gap: '10px';
+  grid-auto-flow: row;
+  max-width: inherit;
+  height: 100vh;
+  align-Content: 'stretch';
+  align-Items: 'center';
+  display: 'grid';
+  flex-Wrap: 'nowrap';
+  justify-Content: 'centers';
+  justify-Items: 'center';
+  overflow: scroll;
+  box-Sizing: 'border-box';
+  row-gap: 10px; //This adjusts the space between the rows
+  grid-template-rows: 60px; //This adjusts the width of the rows
 }
