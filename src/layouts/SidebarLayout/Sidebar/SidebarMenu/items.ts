@@ -29,7 +29,7 @@ const menuItems: MenuItem[] = [
   },
   {
     name: 'Inventario',
-    link: '/admin/inventario',
+    link: '/admin/inventory',
     icon: Inventory
   },
   {
