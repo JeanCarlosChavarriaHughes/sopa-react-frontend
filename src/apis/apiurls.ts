@@ -13,6 +13,11 @@ export default {
   reportGastos: '/gastos/reporte',
 
   // Modulo Facturas
-  getFacturas: '/getCanceledBills'
+  getFacturas: '/getCanceledBills',
+
+  // productos
+  getProducts: '/api/product',
+  getcategories: '/categorias_load',
+
 
 }

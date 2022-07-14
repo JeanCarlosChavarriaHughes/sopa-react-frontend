@@ -12,7 +12,7 @@ const Button = ({ onClick, text, className, type = 'filled', prefix }: ButtonPro
   if (className?.indexOf('w-')! >= 0) wclass = ''
   if (className?.indexOf('h-')! >= 0) hclass = ''
   return (
-    <div className={`${className} flex align-center justify-center button button-${type} text-center text-16 ${hclass} ${wclass}`}
+    <div className={`${className} align-center justify-center button button-${type}`}
       onClick={onClick}>
       {prefix && prefix}{text}
     </div>
