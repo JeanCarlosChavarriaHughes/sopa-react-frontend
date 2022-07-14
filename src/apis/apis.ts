@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { constants } from '../constants/env-conf'
 
-const server = "https://sopa-bar-desarrollo-develop.herokuapp.com"
+const server = constants.SOPA_API;
 const authHeader = (): any => {
   return {
     headers: {

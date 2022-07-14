@@ -49,8 +49,10 @@
   border-radius: 4px;
   background-color: $white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.075);
+  // max-width: inherit;
   max-width: 800px;
   margin: 10px;
+  height: fit-content;
 
   tr.row {
     border-bottom: 1px solid rgba($gray, .3);
@@ -79,6 +81,7 @@
   margin: 10px;
   cursor: pointer;
 
+  // max-width: inherit;
   &.active {
     background-color: rgba($productoColor, 0.15) !important;
     border: 1px solid $productoColor  !important;
@@ -124,11 +127,14 @@
   row-gap: 10px; //This adjusts the space between the rows
   grid-template-rows: 60px; //This adjusts the width of the rows
   grid-template-columns: repeat(auto-fill, 9em);
+  // max-width: 1200px;
+  // margin: 10px auto;
 }
 
 .containerGridStyle {
   display: grid;
   grid-template-columns: 700px 500px;
+  grid-template-columns: repeat(2, 50%);
   grid-gap: '10px';
   grid-auto-flow: row;
   max-width: inherit;
@@ -143,4 +149,9 @@
   box-Sizing: 'border-box';
   row-gap: 10px; //This adjusts the space between the rows
   grid-template-rows: 60px; //This adjusts the width of the rows
+  // @media (min-width: 600px) {
+  //   .containerGridStyle {
+  //     grid-template-columns: repeat(2, 9em);
+  //   }
+  // }
 }
