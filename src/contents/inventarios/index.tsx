@@ -196,10 +196,6 @@ const Inventario = () => {
             </div>
           </div>
 
-
-          {/* <Modal onClose={onClose} open={open}
-            width={680}
-            title={gasto.idgasto > 0 ? 'Editar un gasto' : 'Nuevo registro de gasto'} description='' > */}
           <div className="productos">
             <div className='category-header flex justify-between'>
               <div>
@@ -257,7 +253,6 @@ const Inventario = () => {
             </div>
 
           </div>
-          {/* </Modal> */}
 
         </div>
       </div>
