@@ -1,0 +1,37 @@
+@import '../../App.scss';
+
+.button {
+    border: 1px solid $gray;
+    border-radius: 4px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    background-color: $white ;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 16px;
+
+    &.active {
+        background-color: rgba($primary, 0.15);
+        border: 1px solid $primary ;
+        color: $primary;
+      }
+      
+    &.button-filled {
+        background-color: $white;
+        color: $gray;
+
+        &:hover {
+            background-color: rgba($primary, 0.15);
+            color: $primary;
+        }
+    }
+
+    &.button-outlined {
+        background-color: $white;
+        color: $primary;
+
+        &:hover {
+            background-color: $primary;
+            color: $white;
+        }
+    }
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getApi, postApi, putApi } from "../../apis/apis"
 import apiurls from "../../apis/apiurls"
 import Button from "../../components/Button"
+import Button1 from "../../components/Button1"
 import DataTable from "../../components/DataTable"
 import Dropdown from "../../components/Dropdown"
 import IconButton from "../../components/IconButton"
@@ -15,6 +16,7 @@ import { IInventario } from "../../Models/inventario/IInventario"
 import { IProductos } from "../../Models/inventario/IProductos"
 import Row from "./row"
 import './style.scss'
+
 interface IGasto {
   descripciongasto: string;
   descripciontipogasto: string;
@@ -24,15 +26,17 @@ interface IGasto {
   montogasto: string;
   observaciongasto: string;
 }
+
 const Tipo = ({ tipo, onClick, active }:
   {
     onClick: any; active: boolean;
     tipo: IInventario
   }) => {
-  return (
-    <div className={`tipo h-25 text-12 cursor-pointer ml-10 ph-8 ${active ? 'active' : ''}`}
-      onClick={() => { onClick(tipo) }}>{tipo.descripcioncategoria}</div>
-  )
+    return (
+      <div className={`categoria cursor-pointer ml-5 mr-5 ${active ? 'active' : ''}`} onClick={() => { onClick(tipo) }}>
+        {tipo.descripcioncategoria}
+      </div>
+    )
 }
 
 const Inventario = () => {
@@ -147,13 +151,9 @@ const Inventario = () => {
 
   return (
     <ContentLayout title="Inventario de productos" description="Revisa tus productos en venta y los materiales que los componen.">
-
       <div className="content-expenses">
-        <div className="report-btn" >
-          <Button text="&nbsp;&nbsp;Descargar reporte" className="w-180" onClick={onReport} type='outlined'
-            prefix={<IcDownload />} />
-        </div>
-        <div className="flex mb-30">
+        {/* categorias*/}
+        <div className="containerCategoria  mb-30">
           <IconButton outlined onClick={() => { setOpenTipoModal(true) }} size={25}
             icon={<div className="text-24 text-primary text-center" style={{ lineHeight: '24px' }}>+</div>} />
           {/* <Tipo tipo={{ idcategoria: 0, descripcioncategoria: 'Todos', text: 'Todos' }} active={tipoCategorySelected?.idcategoria === 0}
@@ -169,24 +169,28 @@ const Inventario = () => {
 
 
         </div>
+        {/* Modal container Grilla */}
         <div className="containerGridStyle">
-
-          <div className="productos" >
-            <div className='category-header flex justify-between'>
+          {/* Productos */}
+          <div className=" container1 " >
+            {/*Header Container */}
+            <div className='category-header flex justify-between p-15'>
               <div>
-                <p className='category-title text-dark text-20'>Categoría * {tipoCategorySelected && tipoCategorySelected.descripcioncategoria}</p>
-                <p className='category-count text-gray text-14 mt-5'>{productos.length} productos</p>
+                <p className='category-title text-dark text-20'>
+                  Categoría * {tipoCategorySelected && tipoCategorySelected.descripcioncategoria}
+                </p>
+                <p className='category-count text-gray text-14 mt-5'>
+                  {productos.length} productos
+                  </p>
               </div>
-
-              <TextField onChange={(e: any) => { setWord(e.target.value) }} className='pr-9'
-                value={word} placeholder='Buscar...' suffix={<Search />} />
+              <TextField onChange={(e: any) => { setWord(e.target.value) }} className='pr-9' value={word} placeholder='Buscar...' suffix={<Search />} />
             </div>
-
+            {/* grilla de productos */}
             <div className="gridStyle">
               {productos.map((producto: any, i: number) =>
                 // <Producto tipo={producto} active={producto.idtipogasto == tipoId} key={i}
                 //   onClick={(value: number) => { setTipoid(value) }} />
-                <Button className="producto " text={producto.descripcionproducto}
+                <Button1 className="producto  text-gray" text={producto.descripcionproducto}
                   onClick={() => {
                     if (tipoId > 0)
                       setGasto({ ...gasto, idTipoGasto: tipoId })
@@ -195,8 +199,8 @@ const Inventario = () => {
               )}
             </div>
           </div>
-
-          <div className="productos">
+          {/*Info productos */}
+          <div className="container2 ">
             <div className='category-header flex justify-between'>
               <div>
                 <p className='category-title text-dark text-20'>Categoría * {tipoCategorySelected && tipoCategorySelected.descripcioncategoria}</p>
@@ -207,7 +211,7 @@ const Inventario = () => {
                 value={word} placeholder='Buscar...' suffix={<Search />} />
             </div>
 
-            <div className='pt-9'>
+            <div className='flexq pt-9'>
               <div className='flex'>
                 <div className="w-full">
                   <p className='text-black text-16 mb-8'>Tipo de gasto</p>
