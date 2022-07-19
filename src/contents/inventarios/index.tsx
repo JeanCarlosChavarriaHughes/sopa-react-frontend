@@ -211,7 +211,7 @@ const Inventario = () => {
                 value={word} placeholder='Buscar...' suffix={<Search />} />
             </div>
 
-            <div className='flexq pt-9'>
+            <div className=' pt-9'>
               <div className='flex'>
                 <div className="w-full">
                   <p className='text-black text-16 mb-8'>Tipo de gasto</p>
