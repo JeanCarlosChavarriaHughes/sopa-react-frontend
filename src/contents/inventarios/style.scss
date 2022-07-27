@@ -33,7 +33,7 @@
 .containerGridStyle {
   display: flex;
   justify-content: space-between;
-  height: 68vh;
+  height: 69vh;
 }
 
 .container1 {
@@ -59,6 +59,7 @@
   direction: ltl;
   overflow: auto ;
   height: 55vh;
+  padding: 0px 10px;
 }
 
 // Productos
@@ -68,7 +69,26 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  margin: 15px;
+  margin: 4px 15px;
+}
+
+// Botton edit 
+.editarModal{
+  display: flex;
+
+  & span{
+    margin-left: 15px;
+    color: $primary;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+  }
+}
+
+.infocontainer{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 
@@ -77,25 +97,6 @@
   background-color: $white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.075);
   width: 500px;
-
-  tr.row {
-    border-bottom: 1px solid rgba($gray, .3);
-
-    td {
-      justify-content: center;
-    }
-  }
-}
-
-.productos {
-  border-radius: 4px;
-  background-color: $white;
-  // background-color: red;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.075);
-  // max-width: inherit;
-  max-width: 800px;
-  margin: 10px;
-  height: fit-content;
 
   tr.row {
     border-bottom: 1px solid rgba($gray, .3);

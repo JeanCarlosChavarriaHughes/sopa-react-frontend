@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react"
 import { getApi, postApi, putApi } from "../../apis/apis"
 import apiurls from "../../apis/apiurls"
-import Button from "../../components/Button"
+// import Button from "../../components/Button"
 import Button1 from "../../components/Button1"
-import DataTable from "../../components/DataTable"
-import Dropdown from "../../components/Dropdown"
+import Pencil from "../../components/Icons/pencil"
 import IconButton from "../../components/IconButton"
-import IcDownload from "../../components/Icons/icdownload"
 import Search from "../../components/Icons/search"
 import Trash from "../../components/Icons/trash"
-import Modal from "../../components/Modal"
+
 import TextField from "../../components/TextField"
-import ContentLayout from "../../layouts/ContentLayout"
 import { IInventario } from "../../Models/inventario/IInventario"
+import ContentLayout from "../../layouts/ContentLayout"
+
+// import DataTable from "../../components/DataTable"
+// import Dropdown from "../../components/Dropdown"
+// import IcDownload from "../../components/Icons/icdownload"
+import Modal from "../../components/Modal"
 import { IProductos } from "../../Models/inventario/IProductos"
 import Row from "./row"
 import './style.scss'
@@ -151,27 +154,21 @@ const Inventario = () => {
 
   return (
     <ContentLayout title="Inventario de productos" description="Revisa tus productos en venta y los materiales que los componen.">
-      <div className="content-expenses">
+      <div className="content-expenses ">
         {/* categorias*/}
-        <div className="containerCategoria  mb-30">
+        <div className="containerCategoria  mb-20">
           <IconButton outlined onClick={() => { setOpenTipoModal(true) }} size={25}
             icon={<div className="text-24 text-primary text-center" style={{ lineHeight: '24px' }}>+</div>} />
-          {/* <Tipo tipo={{ idcategoria: 0, descripcioncategoria: 'Todos', text: 'Todos' }} active={tipoCategorySelected?.idcategoria === 0}
-            onClick={(tipo: IInventario) => {
-              setTipoCategorySelected(tipo)
-            }} /> */}
 
           {categorias.map((e: IInventario, i: number) =>
             <Tipo tipo={e} active={e.idcategoria === tipoCategorySelected?.idcategoria} key={i}
               onClick={(tipo: IInventario) => {
                 setTipoCategorySelected(tipo)
               }} />)}
-
-
         </div>
         {/* Modal container Grilla */}
         <div className="containerGridStyle">
-          {/* Productos */}
+          {/* Container 1 */}
           <div className=" container1 " >
             {/*Header Container */}
             <div className='category-header flex justify-between p-15'>
@@ -188,40 +185,55 @@ const Inventario = () => {
             {/* grilla de productos */}
             <div className="gridStyle">
               {productos.map((producto: any, i: number) =>
-                // <Producto tipo={producto} active={producto.idtipogasto == tipoId} key={i}
-                //   onClick={(value: number) => { setTipoid(value) }} />
-                <Button1 className="producto  text-gray" text={producto.descripcionproducto}
-                  onClick={() => {
-                    if (tipoId > 0)
-                      setGasto({ ...gasto, idTipoGasto: tipoId })
+                <Button1 className="producto  text-gray" text={producto.descripcionproducto} onClick={() => {
+                  if (tipoId > 0) setGasto({ ...gasto, idTipoGasto: tipoId })
                     setOpen(true)
                   }} />
               )}
             </div>
           </div>
-          {/*Info productos */}
+          {/* Container 1 */}
           <div className="container2 ">
+            {/*Header Container 2 */}
             <div className='category-header flex justify-between'>
               <div>
-                <p className='category-title text-dark text-20'>Categoría * {tipoCategorySelected && tipoCategorySelected.descripcioncategoria}</p>
-                <p className='category-count text-gray text-14 mt-5'>{productos.length} productos</p>
+                <p className='category-title text-dark text-20'>Producto</p>
+              </div>
+              <div className="editarModal">
+                <IconButton  icon={<Pencil/>} onClick={undefined} />
+                <span>Editar</span>
+              </div>             
+            </div>
+            {/* Info Producto */}
+            <div className='infocontainer pt-9'>
+              <div>
+                <p className='text-gray text-16 mb-10'>Código:</p>
+                <p className='text-gray text-16 mb-10'>Código:</p>
+                <p className='text-gray text-16 mb-10'>Código:</p>
+                <p className='text-gray text-16 mb-10'>Código:</p>
+                <p className='text-gray text-16 mb-10'>Código:</p>
+
+              </div>
+              
+              
+              
+              {/* eliminar Producto  */}
+              <div className="editarModal">
+                <IconButton  icon={<Trash/>} onClick={undefined} />
+                <span>Eliminar Producto</span>
               </div>
 
-              <TextField onChange={(e: any) => { setWord(e.target.value) }} className='pr-9'
-                value={word} placeholder='Buscar...' suffix={<Search />} />
-            </div>
 
-            <div className=' pt-9'>
               <div className='flex'>
-                <div className="w-full">
-                  <p className='text-black text-16 mb-8'>Tipo de gasto</p>
+                   
+                  {/* */}
                   {/* <Dropdown onSelect={(i: number) => { setGasto({ ...gasto, idTipoGasto: tipos[i].idtipogasto }) }}
                     items={tipos.map(e => e.descripciontipogasto)} value={tipos.find((e) => e.idtipogasto == gasto.idTipoGasto)?.descripciontipogasto} valueName='descripciontipogasto' className='w-300' /> */}
-                  <p className='text-black text-16 mb-8 mt-25'>Descripción del gasto</p>
-                  <TextField placeholder='Descripción' onChange={(e: any) => { setGasto({ ...gasto, descripcionGasto: e.target.value }) }}
+                  {/* <p className='text-black text-16 mb-8 mt-25'>Descripción del gasto</p> */}
+                  {/* <TextField placeholder='Descripción' onChange={(e: any) => { setGasto({ ...gasto, descripcionGasto: e.target.value }) }}
                     value={gasto.descripcionGasto} className='w-300 h-30' />
-                  <div className="flex mt-25 w-full justify-between">
-                    <div>
+                  <div className="flex mt-25 w-full justify-between"> */}
+                    {/* <div>
                       <p className='text-black text-16 mb-8'>Monto</p>
                       <TextField placeholder='Monto' type="number"
                         prefix={
@@ -229,30 +241,23 @@ const Inventario = () => {
                           >$</p>}
                         onChange={(e: any) => { setGasto({ ...gasto, montoGasto: e.target.value }) }}
                         value={gasto.montoGasto} className='w-300 h-30' />
-                    </div>
-                    <div>
+                    </div> */}
+                    {/* <div>
                       <p className='text-black text-16 mb-8'>Estado</p>
                       <Dropdown onSelect={(i: number) => { setGasto({ ...gasto, estadoGasto: statuses[i] }) }}
                         items={statuses} value={gasto.estadoGasto} className='w-300' />
-                    </div>
-                  </div>
-                  <div className="mt-25">
+                    </div> */}
+                  {/* </div> */}
+                  {/* <div className="mt-25">
                     <p className='text-black text-16 mb-8'>Observación</p>
                     <TextField placeholder='Observación'
                       onChange={(e: any) => { setGasto({ ...gasto, observacionGasto: e.target.value }) }}
                       value={gasto.observacionGasto} className='w-300 h-30' />
-                  </div>
-                  <div className="mt-35 flex justify-between">
-                    {gasto.idgasto > 0 ? <div className="flex align-center text-primary text-14 cursor-pointer" onClick={onRemove}>
+                  </div> */}
+                    {/* {gasto.idgasto > 0 ? <div className="flex align-center text-primary text-14 cursor-pointer" onClick={onRemove}>
                       <Trash /><span>&nbsp;Eliminar gasto</span>
-                    </div> : <div />}
-                    <div className="flex">
-                      <Button onClick={onClose}
-                        text='Cancelar' type="outlined" className="mr-16" />
-                      <Button onClick={onSave} text='Guardar' type="filled" />
-                    </div>
-                  </div>
-                </div>
+                    </div> : <div />} */}
+              
               </div>
             </div>
 
